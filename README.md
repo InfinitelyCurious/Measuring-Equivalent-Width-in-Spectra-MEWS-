@@ -209,7 +209,6 @@ Special thanks to:
 
 Dr. Kelly Holley-Bockelmann (Advisor)
 Dr. Charles T. Liu (Co-Advisor and Co-Chair)
-Miguel R. Anderson | Github: @mandersonGH (MOONJAM collaboration)
 License
 MIT License
 
