@@ -197,6 +197,7 @@ Common issues:
 "Line out of wavelength range": Check spectral coverage; some SDSS fibers have truncated blue/red ends
 "Continuum fit failed": Try different continuum method (e.g., 'robust' for noisy data)
 Unrealistic EW values: Review diagnostic plots; may indicate poor continuum placement or blended lines
+
 Acknowledgments
 This work was supported by:
 
@@ -207,8 +208,8 @@ SDSS-IV MaNGA Survey collaboration
 Special thanks to:
 
 Dr. Kelly Holley-Bockelmann (Advisor)
-Dr. Charles T. Liu (Co-Chair)
-Miguel Falcone (MOONJAM collaboration)
+Dr. Charles T. Liu (Co-Advisor and Co-Chair)
+Miguel R. Anderson | Github: @mandersonGH (MOONJAM collaboration)
 License
 MIT License
 
