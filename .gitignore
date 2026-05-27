@@ -1,4 +1,142 @@
-pycache/
-*.pyc
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
 venv/
-data/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints
+.jupyter/
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Rope
+.ropeproject
+
+# Data files - MEWS works with these but shouldn't store them in repo
+*.fits
+*.fit
+*.json
+data/*.csv
+data/*.dat
+data/*.txt
+
+# Example data - keep small examples only
+!examples/sample_data/*.json
+!examples/sample_data/*.fits
+
+# Output files - diagnostics and plots
+diagnostics/
+output/
+outputs/
+results/
+plots/
+*.png
+*.jpg
+*.pdf
+
+# Keep example outputs for documentation
+!examples/example_outputs/*.png
+!docs/images/*.png
+
+# Logs and temporary files
+*.log
+*.tmp
+temp/
+tmp/
+
+# OS-specific files
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Editor backups
+*.swp
+*.swo
+*.swn
+*.bak
+*~
+
+# pytest
+.pytest_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+.cache
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Ignore large test data
+tests/data/*.fits
+tests/data/*.json
+!tests/data/small_example.fits
+
+# Documentation builds
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# Distribution / packaging
+*.whl
