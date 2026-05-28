@@ -1,34 +1,107 @@
 """
-MEASURING EQUIVALENT WIDTH in SPECTRA (MEWS) CODE
-=================================================
+MEASURING EQUIVALENT WIDTH in SPECTRA (MEWS)
+=============================================
 
-This script measures equivalent widths (EW) of spectral lines from astronomical spectra.
-It supports both JSON and FITS file formats and includes multiple continuum fitting methods.
+Automated pipeline for accurate equivalent width measurements in galaxy spectra,
+with built-in validation and adaptive continuum fitting algorithms.
+
+================================================================================
+AUTHOR & CONTACT
+================================================================================
+Olivia A. Greene, PhD
+Vanderbilt University (2020-2026)
+Astrophysicist | Pipeline Developer
+
+Email: oliviaallegragreene@gmail.com
+Website: https://galaxygreene.com
+GitHub: @InfinitelyCurious
+
+================================================================================
+PRIMARY CITATION (DISSERTATION)
+================================================================================
+Greene, O. A. (2026). "Seeing What Is, What Was, What Could Be, What Must Not: 
+Refining, Cataloging, and Investigating A Complete, Spatially Resolved 
+Spectrophotometric Sample of Nearby Post-Starburst E+A Galaxies in SDSS-IV MaNGA." 
+PhD Dissertation, Vanderbilt University. 300+ pages.
+
+Advisors: 
+- Dr. Kelly Holley-Bockelmann (Vanderbilt University)
+- Dr. Charles T. Liu (CUNY College of Staten Island / American Museum of Natural History)
+
+This code implements the methodology from Chapter 3.3.4 Measuring Equivalent Width in Spectra (MEWS)
+
+================================================================================
+PUBLICATIONS BY AUTHOR
+================================================================================
+
+5. Greene, O. A., Dungee, R., Schonhut-Stasik, J., & Oldham, L. (2025). 
+   "Neurodivergent in astronomy: the early-career researcher edition." 
+   Nature Astronomy, 9, 1754-1757. [First-author interview feature]
+
+4. Greene, O. A., et al. (2026). "A Complete Catalog of Post-starburst, 
+   E+A Galaxies in SDSS-IV MaNGA (MPL-11): A Citizen Science Approach to 
+   Spectrophotometric Classification & the Automation of Equivalent Width 
+   Measurements." The Astrophysical Journal (In Preparation).
+
+3. Ludwig, E., Iyer, K., Liu, C. T., Grwiser, E., & Greene, O. A. (2025). 
+   "Comparing Star Formation Histories and Evolutionary Pathways of 
+   Post-Starburst and E+A Galaxies in TNG50 and SDSS-IV MaNGA." 
+   The Astrophysical Journal, 989(1), 87.
+
+2. Greene, O. A., et al. (2021). "Refining the E+A Galaxy: A Spatially 
+   Resolved Spectrophotometric Sample of Nearby Post-starburst Systems in 
+   SDSS-IV MaNGA (MPL-5)." The Astrophysical Journal, 910, 162.
+   DOI: 10.3847/1538-4357/abe4d0
+
+1. Marinelli, M., Greene, O. A., Riffel, R. A., Rowlands, K., & Liu, C. 
+   (2020). "SDSS-IV MaNGA: A Dwarf E+A Galaxy Quenched by AGN Feedback." 
+   Research Notes of the AAS, 4, 110.
+
+================================================================================
+LICENSE
+================================================================================
+MIT License - See LICENSE file for details
+
+Copyright (c) 2026 Olivia A. Greene
+
+================================================================================
+OVERVIEW
+================================================================================
+
+This script measures equivalent widths (EW) of spectral lines from astronomical 
+spectra. It supports both JSON and FITS file formats and includes multiple 
+continuum fitting methods.
+
+Developed for post-starburst galaxy research; validated against manual PyRAF 
+measurements for 183 E+A galaxies in SDSS-IV MaNGA DR17.
+
+KEY FEATURES:
+- 4 continuum fitting algorithms (improved, segmented, robust, median)
+- Adaptive line fitting with Gaussian profiles
+- Built-in validation and diagnostic plots
+- CLI interface with preset configurations
+- Batch processing for large catalogs
 
 INSTALLATION REQUIREMENTS:
-- Python 3.7+
-- numpy
-- pandas
-- matplotlib
-- astropy
-- specutils
-- scipy
-- glob (standard library)
-- warnings (standard library)
-- os (standard library)
-- json (standard library)
-- argparse (standard library)
+- Python 3.8+
+- numpy>=1.20, pandas>=1.3, matplotlib>=3.3
+- astropy>=5.0, specutils>=1.0, scipy>=1.7
+
+See requirements.txt for complete dependencies.
 
 USAGE EXAMPLES:
+
 1. Process JSON files with preset configuration:
-   python ew_measurement.py --preset example_json --no-plots
+   python MEWS_Measuring_Equivalent_Width_in_Spectra.py --preset example_json --no-plots
 
 2. Process FITS files with custom settings:
-   python ew_measurement.py --input-type fits --folder-path /path/to/fits/files 
-   --redshift-csv /path/to/redshifts.csv --output-csv results.csv
+   python MEWS_Measuring_Equivalent_Width_in_Spectra.py --input-type fits 
+   --folder-path /path/to/fits/files --redshift-csv /path/to/redshifts.csv 
+   --output-csv results.csv
 
 3. Use specific continuum method:
-   python ew_measurement.py --preset example_fits --continuum-method robust
+   python MEWS_Measuring_Equivalent_Width_in_Spectra.py --preset example_fits 
+   --continuum-method robust
 
 SUPPORTED SPECTRAL LINES:
 - H-alpha (6564.61 Å) - absorption
@@ -36,12 +109,12 @@ SUPPORTED SPECTRAL LINES:
 - [OIII] (5008.24 Å) - emission
 - H-beta (4862.68 Å) - absorption
 - H-gamma (4341.68 Å) - absorption
-- H-delta (4102.89 Å) - absorption
+- H-delta (4102.89 Å) - absorption (strong E+A diagnostic)
 - [OII] (3729.875 Å) - emission
 - [SII] (6718.295, 6732.674 Å) - emission
 
 CONTINUUM METHODS:
-- improved: Polynomial fitting with outlier rejection (default)
+- improved: 5th-degree polynomial with outlier rejection (default, validated)
 - segmented: Fit continuum in segments with spline interpolation
 - robust: Iterative outlier rejection with MAD statistics
 - median: Median filtering approach
@@ -49,6 +122,10 @@ CONTINUUM METHODS:
 OUTPUT:
 - CSV file with EW measurements for each galaxy
 - Optional diagnostic plots showing continuum fits and line profiles
+
+For more examples, see the examples/ directory.
+
+================================================================================
 """
 
 # IMPORTS --------------------------------------------------------------------------------------------
