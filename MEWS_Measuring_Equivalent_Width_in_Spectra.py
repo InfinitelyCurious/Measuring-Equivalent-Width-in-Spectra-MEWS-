@@ -72,8 +72,10 @@ This script measures equivalent widths (EW) of spectral lines from astronomical
 spectra. It supports both JSON and FITS file formats and includes multiple 
 continuum fitting methods.
 
-Developed for post-starburst galaxy research; validated against manual PyRAF 
-measurements for 183 E+A galaxies in SDSS-IV MaNGA DR17.
+Developed for post-starburst galaxy research to replace obsolete PyRAF tools.
+Includes comprehensive visual diagnostic outputs for quality validation at each 
+measurement stage. Successfully used to curate and measure 183 E+A galaxies 
+from ~600 candidates in SDSS-IV MaNGA DR17 (MPL-11).
 
 KEY FEATURES:
 - 4 continuum fitting algorithms (improved, segmented, robust, median)
