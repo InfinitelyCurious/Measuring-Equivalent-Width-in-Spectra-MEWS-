@@ -27,11 +27,14 @@ Developed as part of dissertation research at Vanderbilt University (2020-2026),
 
 Standard spectral synthesis models systematically **underestimate** deep Balmer absorption lines characteristic of post-starburst galaxies. MEWS was developed to:
 
-1. Reproduce the accuracy of manual measurements at scale
-2. Provide transparent, auditable continuum fitting decisions
+1. Replace obsolete PyRAF tools with modern Python pipeline
+2. Provide transparent, auditable continuum fitting decisions with visual validation
 3. Enable systematic equivalent width analysis across large samples (100s-1000s of galaxies)
+4. Produce comprehensive diagnostic plots for quality assessment at scale
 
-**Validation**: MEWS successfully reproduced manual PyRAF measurements for 30 E+A galaxies (Greene et al. 2021, ApJ), then scaled to measure 579+ candidates in MaNGA MPL-11.
+**Practical Application**: MEWS successfully processed ~600 E+A galaxy candidates from MaNGA MPL-11, curating the final validated sample of **183 spatially-resolved systems** through visual inspection of diagnostic outputs. The pipeline generated 1,830+ equivalent width measurements (183 galaxies × 10 spectral lines) with comprehensive diagnostic plots for each.
+
+**Initial Validation**: Comparison with 30 manual PyRAF measurements from MPL-5 sample (Greene et al. 2021, ApJ) showed excellent agreement. However, PyRAF is no longer maintained—MEWS provides a modern, reproducible alternative with superior diagnostic capabilities.
 
 ## Installation
 
