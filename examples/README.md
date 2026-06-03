@@ -1,4 +1,3 @@
-```markdown
 # MEWS Usage Examples
 
 This directory contains example scripts demonstrating how to use MEWS for equivalent width measurements.
